@@ -1,130 +1,483 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agente IA - Registro de Marcas</title>
+
+    <meta
+        name="description"
+        content="SMART — protótipo demonstrativo para análise inicial de marcas, classificação de risco e exploração das Classes de Nice."
+    >
+
+    <title>SMART — Análise de Marcas</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
     <div id="app-container" class="container plan-basico">
+
+        <!-- =====================================================
+             CABEÇALHO
+        ====================================================== -->
+
         <header>
-            <h1>Sistema de Marcas Assistido Por Redes de Tecnologia </h1>
-            <p class="subtitle">SMART - A Inteligência Que Protege A Sua Marca</p>
+
+            <h1>Sistema de Marcas Assistido por Redes de Tecnologia</h1>
+
+            <p class="subtitle">
+                SMART — A Inteligência que Protege a Sua Marca
+            </p>
+
             <div class="plan-indicator">
                 <span>Seu Plano:</span>
                 <span id="planName" class="plan-name">Básico</span>
             </div>
+
             <div class="plan-management">
+
                 <span>Gerenciar Plano:</span>
-                <button id="planBtn-Básico" class="btn-secondary">Básico</button>
-                <button id="planBtn-Profissional" class="btn-secondary">Profissional</button>
-                <button id="planBtn-Premium">Premium</button>
+
+                <button
+                    id="planBtn-Básico"
+                    class="btn-secondary"
+                    type="button"
+                >
+                    Básico
+                </button>
+
+                <button
+                    id="planBtn-Profissional"
+                    class="btn-secondary"
+                    type="button"
+                >
+                    Profissional
+                </button>
+
+                <button
+                    id="planBtn-Premium"
+                    type="button"
+                >
+                    Premium
+                </button>
+
             </div>
+
         </header>
 
-        <div class="main-content">
-            <div class="input-section">
-                <h2>Análise de Viabilidade</h2>
-                <div class="input-group">
-                    <input type="text" id="marcaInput" placeholder="Digite o nome da marca para análise..." />
-                    <select id="classeSelect">
-                        <option value="">Selecione a classe de produtos/serviços...</option>
-                    </select>
-                    <button onclick="analisarMarca()">Analisar</button>
-                    <button onclick="limparPesquisa()" class="btn-secondary">Limpar</button>
-                </div>
-            </div>
 
-            <div class="results-section">
-                <div id="loading" class="hidden">
-                    <div class="spinner"></div>
-                    <p>Analisando marca e consultando bancos de dados...</p>
+        <main class="main-content">
+
+            <!-- =================================================
+                 AVISO DO PROTÓTIPO
+            ================================================== -->
+
+            <section class="input-section">
+
+                <h2>🔬 Protótipo Demonstrativo</h2>
+
+                <p>
+                    O SMART é um projeto educacional que demonstra uma
+                    experiência digital para análise inicial de marcas.
+                    Os resultados apresentados nesta versão são
+                    <strong>simulados</strong> e não representam consultas
+                    reais ao INPI ou parecer jurídico.
+                </p>
+
+            </section>
+
+
+            <!-- =================================================
+                 ANÁLISE DE VIABILIDADE
+            ================================================== -->
+
+            <section class="input-section">
+
+                <h2>Análise Demonstrativa de Viabilidade</h2>
+
+                <p>
+                    Informe o nome pretendido e selecione uma das
+                    Classes de Nice para executar a simulação.
+                </p>
+
+                <div class="input-group">
+
+                    <input
+                        type="text"
+                        id="marcaInput"
+                        placeholder="Digite o nome da marca..."
+                        autocomplete="off"
+                    >
+
+                    <select id="classeSelect">
+
+                        <option value="">
+                            Selecione a classe de produtos/serviços...
+                        </option>
+
+                    </select>
+
+                    <button
+                        type="button"
+                        onclick="analisarMarca()"
+                    >
+                        Analisar
+                    </button>
+
+                    <button
+                        type="button"
+                        onclick="limparPesquisa()"
+                        class="btn-secondary"
+                    >
+                        Limpar
+                    </button>
+
                 </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RESULTADOS
+            ================================================== -->
+
+            <section class="results-section">
+
+                <!-- LOADING -->
+
+                <div id="loading" class="hidden">
+
+                    <div class="spinner"></div>
+
+                    <p>
+                        Processando análise demonstrativa...
+                    </p>
+
+                </div>
+
+
+                <!-- RESULTADO -->
 
                 <div id="resultado" class="hidden">
-                    <div class="result-header">
-                        <h3>Resultado da Análise: <span id="nomeMarca"></span></h3>
-                        <div class="header-controls">
-                            <div class="risk-badge" id="riskBadge"></div>
-                            <button onclick="exportarPDF()" class="btn-export">Exportar PDF</button>
-                        </div>
-                    </div>
-                    
-                    <div class="result-details">
-                        <div class="conflicts-section">
-                            <h4>🚨 Conflitos Identificados</h4>
-                            <div id="conflitosList"></div>
-                        </div>
-                        
-                        <div class="suggestions-section">
-                            <h4>💡 Recomendações</h4>
-                            <div id="sugestoesList"></div>
-                        </div>
-                        
-                        <div class="next-steps">
-                            <h4>📋 Próximos Passos</h4>
-                            <div id="proximosPassos"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="features-section">
-                <h2>Funcionalidades do Agente</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <div class="feature-icon">🔍</div>
-                        <h3>Busca Inteligente</h3>
-                        <p>Análise em bancos de dados nacionais e internacionais</p>
+                    <div class="result-header">
+
+                        <h3>
+                            Resultado da Análise:
+                            <span id="nomeMarca"></span>
+                        </h3>
+
+                        <div class="header-controls">
+
+                            <div
+                                class="risk-badge"
+                                id="riskBadge"
+                            ></div>
+
+                            <button
+                                type="button"
+                                onclick="exportarPDF()"
+                                class="btn-export"
+                            >
+                                Exportar PDF
+                            </button>
+
+                        </div>
+
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⚖️</div>
-                        <h3>Análise de Similaridade</h3>
-                        <p>Detecção de conflitos fonéticos e semânticos</p>
+
+
+                    <div class="result-details">
+
+                        <div class="conflicts-section">
+
+                            <h4>
+                                🔎 Pontos de Atenção
+                            </h4>
+
+                            <div id="conflitosList"></div>
+
+                        </div>
+
+
+                        <div class="suggestions-section">
+
+                            <h4>
+                                💡 Recomendações Demonstrativas
+                            </h4>
+
+                            <div id="sugestoesList"></div>
+
+                        </div>
+
+
+                        <div class="next-steps">
+
+                            <h4>
+                                📋 Próximos Passos
+                            </h4>
+
+                            <div id="proximosPassos"></div>
+
+                        </div>
+
                     </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">📊</div>
-                        <h3>Relatório de Viabilidade</h3>
-                        <p>Classificação de risco e fundamentação jurídica</p>
-                    </div>
-                    <div class="feature-card">
-                        <div class="feature-icon">⏰</div>
-                        <h3>Gestão de Prazos</h3>
-                        <p>Alertas inteligentes para renovações e respostas</p>
-                    </div>
-                    <div class="feature-card profissional-feature">
-                        <div class="feature-icon">🔗</div>
-                        <h3>Conexão Direta INPI</h3>
-                        <p>Busca em tempo real na base de dados oficial do INPI.</p>
-                        <div class="profissional-badge"><span>🔒</span> Profissional</div>
-                    </div>
-                    <div class="feature-card profissional-feature">
-                        <div class="feature-icon">🛡️</div>
-                        <h3>Monitoramento Contínuo</h3>
-                        <p>Seja notificado sobre novas marcas conflitantes publicadas.</p>
-                        <div class="profissional-badge"><span>🔒</span> Profissional</div>
-                    </div>
-                    <div class="feature-card premium-feature">
-                        <div class="feature-icon">📜</div>
-                        <h3>Relatórios Jurídicos</h3>
-                        <p>Gere pareceres com fundamentação jurídica para decisões estratégicas.</p>
-                        <div class="premium-badge"><span>🔒</span> Premium</div>
-                    </div>
-                    <div class="feature-card premium-feature">
-                        <div class="feature-icon">🔌</div>
-                        <h3>Integração via API</h3>
-                        <p>Conecte o poder do agente aos seus próprios sistemas.</p>
-                        <div class="premium-badge"><span>🔒</span> Premium</div>
-                    </div>
+
+
+                    <p>
+                        <small>
+                            ⚠️ Este resultado possui finalidade exclusivamente
+                            educacional e demonstrativa. Antes de solicitar o
+                            registro de uma marca, consulte as fontes oficiais
+                            aplicáveis e, quando necessário, um profissional
+                            especializado.
+                        </small>
+                    </p>
+
                 </div>
-            </div>
-        </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 FUNCIONALIDADES / ROADMAP
+            ================================================== -->
+
+            <section class="features-section">
+
+                <h2>Funcionalidades e Visão do Produto</h2>
+
+                <p>
+                    O protótipo demonstra funcionalidades atuais e apresenta
+                    recursos planejados para possíveis evoluções do SMART.
+                </p>
+
+
+                <div class="features-grid">
+
+                    <!-- CLASSES DE NICE -->
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🗂️
+                        </div>
+
+                        <h3>Classes de Nice</h3>
+
+                        <p>
+                            Seleção entre as 45 classes internacionais
+                            de produtos e serviços utilizadas no
+                            contexto de classificação de marcas.
+                        </p>
+
+                    </div>
+
+
+                    <!-- ANÁLISE DEMONSTRATIVA -->
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            🔍
+                        </div>
+
+                        <h3>Análise Demonstrativa</h3>
+
+                        <p>
+                            Simulação de classificação de risco baseada
+                            no nome informado e na classe selecionada.
+                        </p>
+
+                    </div>
+
+
+                    <!-- RISCO -->
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            📊
+                        </div>
+
+                        <h3>Classificação de Risco</h3>
+
+                        <p>
+                            Apresentação demonstrativa dos níveis
+                            baixo, moderado e alto para apoiar
+                            a experiência do protótipo.
+                        </p>
+
+                    </div>
+
+
+                    <!-- RECOMENDAÇÕES -->
+
+                    <div class="feature-card">
+
+                        <div class="feature-icon">
+                            💡
+                        </div>
+
+                        <h3>Próximos Passos</h3>
+
+                        <p>
+                            Recomendações educacionais para demonstrar
+                            como uma futura solução poderia orientar
+                            a jornada do usuário.
+                        </p>
+
+                    </div>
+
+
+                    <!-- PROFISSIONAL -->
+
+                    <div class="feature-card profissional-feature">
+
+                        <div class="feature-icon">
+                            🔗
+                        </div>
+
+                        <h3>Integração com Fontes Oficiais</h3>
+
+                        <p>
+                            Roadmap para integração com fontes de dados
+                            aplicáveis à pesquisa de marcas.
+                        </p>
+
+                        <div class="profissional-badge">
+                            <span>🔒</span>
+                            Profissional
+                        </div>
+
+                    </div>
+
+
+                    <!-- MONITORAMENTO -->
+
+                    <div class="feature-card profissional-feature">
+
+                        <div class="feature-icon">
+                            🛡️
+                        </div>
+
+                        <h3>Monitoramento</h3>
+
+                        <p>
+                            Conceito de acompanhamento contínuo de
+                            informações relacionadas às marcas monitoradas.
+                        </p>
+
+                        <div class="profissional-badge">
+                            <span>🔒</span>
+                            Profissional
+                        </div>
+
+                    </div>
+
+
+                    <!-- PDF -->
+
+                    <div class="feature-card premium-feature">
+
+                        <div class="feature-icon">
+                            📜
+                        </div>
+
+                        <h3>Relatório em PDF</h3>
+
+                        <p>
+                            Exportação do resultado demonstrativo
+                            apresentado na aplicação.
+                        </p>
+
+                        <div class="premium-badge">
+                            <span>🔒</span>
+                            Premium
+                        </div>
+
+                    </div>
+
+
+                    <!-- IA -->
+
+                    <div class="feature-card premium-feature">
+
+                        <div class="feature-icon">
+                            🤖
+                        </div>
+
+                        <h3>Inteligência Artificial</h3>
+
+                        <p>
+                            Roadmap para utilização de IA e NLP na
+                            análise de similaridade e contextualização
+                            de marcas.
+                        </p>
+
+                        <div class="premium-badge">
+                            <span>🔒</span>
+                            Roadmap
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 DISCLAIMER
+            ================================================== -->
+
+            <section class="input-section">
+
+                <h2>⚠️ Aviso Importante</h2>
+
+                <p>
+                    O SMART é um <strong>protótipo educacional e
+                    demonstrativo</strong>.
+                </p>
+
+                <p>
+                    Esta versão não realiza consultas oficiais ao INPI,
+                    não executa busca jurídica de anterioridade e não
+                    fornece parecer ou aconselhamento jurídico.
+                </p>
+
+                <p>
+                    Os resultados gerados servem exclusivamente para
+                    demonstrar conceitos de desenvolvimento de produto,
+                    experiência do usuário e arquitetura de uma futura
+                    solução tecnológica.
+                </p>
+
+            </section>
+
+        </main>
+
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <!-- =========================================================
+         DEPENDÊNCIAS
+    ========================================================== -->
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+    ></script>
+
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+    ></script>
+
     <script src="data.js"></script>
+
     <script src="script.js"></script>
+
 </body>
+
 </html>
