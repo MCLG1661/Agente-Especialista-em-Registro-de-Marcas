@@ -9,14 +9,13 @@
 // CONFIGURAÇÃO DOS PLANOS
 // ----------------------------------------------------------
 
+const plans = ["Básico", "Profissional", "Premium"];
+
 const savedPlan = localStorage.getItem("smart-demo-plan");
 
 let currentPlan = savedPlan && plans.includes(savedPlan)
     ? savedPlan
     : "Básico";
-
-const plans = ["Básico", "Profissional", "Premium"];
-
 
 // ----------------------------------------------------------
 // INICIALIZAÇÃO DA APLICAÇÃO
