@@ -1,203 +1,598 @@
-# ®️ SMART (Sistema de Marcas Assistido Por Redes de Tecnologia Artificial) — Plataforma Inteligente para Análise de Marcas
+## ®️SMART — Plataforma Inteligente para Análise de Marcas
 
-*Protótipo SaaS para análise de viabilidade e apoio ao processo de registro de marcas*
+> Protótipo SaaS demonstrativo para análise inicial de marcas, classificação de risco, exploração das Classes de Nice e simulação de uma jornada digital de contratação.
 
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)
 ![HTML5](https://img.shields.io/badge/HTML5-Frontend-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-Responsive-1572B6?logo=css3&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-F7DF1E?logo=javascript&logoColor=black)
-![jsPDF](https://img.shields.io/badge/jsPDF-PDF%20Export-red) 
-![SaaS](https://img.shields.io/badge/Product-SaaS-7952B3)
-![Vercel](https://img.shields.io/badge/Deploy-Vercel-000000?logo=vercel)
-![Status](https://img.shields.io/badge/Status-Protótipo-blue)
-
-**SMART — Sistema de Marcas Assistido por Redes de Tecnologia Artificial** é um 
-protótipo de aplicação web desenvolvido para explorar como tecnologia, automação 
-e experiência digital podem apoiar processos relacionados à análise de marcas.
-
-A solução permite simular a avaliação inicial de um nome de marca, apresentar 
-possíveis conflitos e organizar informações em um relatório de viabilidade.
-
-O projeto também explora um modelo conceitual de produto **SaaS (Software as a Service)**, 
-com diferentes planos e funcionalidades.
-
-> ⚠️ O SMART é um protótipo demonstrativo. As consultas, análises e recomendações 
-> apresentadas pela aplicação são simuladas e não substituem pesquisas oficiais, 
-> análises especializadas ou orientação jurídica.
+![Vercel](https://img.shields.io/badge/Vercel-Deploy-000000?logo=vercel&logoColor=white)
+![SaaS](https://img.shields.io/badge/Product-SaaS%20Prototype-7952B3)
+![UX](https://img.shields.io/badge/UX-Product%20Experience-FF69B4)
+![Status](https://img.shields.io/badge/Status-Prototype-orange)
 
 ---
 
-## 🌐 Aplicação Online
+## 📌 Sobre o Projeto
 
-**[Acesse o SMART](https://agente-especialista-em-registro-de.vercel.app/)**
+O **SMART** é um protótipo de produto digital criado para explorar como tecnologia, automação e experiência do usuário podem ser aplicadas à jornada inicial de análise e proteção de marcas.
 
-A versão demonstrativa do SMART está publicada na **Vercel** e pode ser acessada diretamente pelo navegador.
+**SMART — Sistema de Marcas Assistido por Redes de Tecnologia**
 
---- 
+A aplicação permite ao usuário:
 
-## 💼 Problema
+- informar o nome de uma marca;
+- selecionar uma das Classes de Nice;
+- executar uma análise demonstrativa;
+- receber uma classificação de risco;
+- visualizar pontos de atenção;
+- receber recomendações;
+- consultar próximos passos;
+- explorar diferentes planos de produto;
+- simular uma jornada de upgrade;
+- persistir o plano escolhido no navegador;
+- exportar resultados demonstrativos em PDF no plano Premium.
 
-O processo de criação e registro de uma marca envolve diferentes etapas de 
-pesquisa e avaliação.
-
-Antes de iniciar um pedido de registro, empresas e empreendedores podem precisar 
-organizar informações relacionadas a :
-
-- Nome pretendido
-- Classe de produtos ou serviços
-- Possíveis marcas semelhantes
-- Potenciais conflitos
-- Nível de risco
-- Próximos passos
-
-O SMART foi concebido para explorar como uma experiência digital poderia 
-centralizar essas informações e facilitar uma análise inicial.
+O projeto foi estruturado como um **protótipo SaaS**, combinando desenvolvimento Front-end, regras de negócio, UX, Product Thinking e concepção de uma possível evolução futura com Inteligência Artificial.
 
 ---
 
-## 🎯 Objetivo
+## ⚠️ Importante
 
-Criar um protótipo de produto digital capaz de demonstrar uma experiência 
-simplificada de análise de marcas.
+O SMART é um **projeto educacional e demonstrativo**.
 
-O projeto combina :
+A versão atual:
 
-**Product Thinking + Automação + UX + Desenvolvimento Web + Modelo SaaS**
+- **não realiza consultas reais ao INPI**;
+- **não consulta bases oficiais de marcas**;
+- **não fornece parecer jurídico**;
+- **não processa pagamentos reais**;
+- **não implementa Inteligência Artificial ou NLP nesta versão**.
 
----
+As classificações e recomendações apresentadas pela aplicação são simuladas para demonstrar a experiência e a lógica de um possível produto digital.
 
-## ✨ Funcionalidades Demonstradas
-
-🔎 Análise de Viabilidade
-
-O usuário informa o nome pretendido para a marca e seleciona uma classe de 
-produtos ou serviços para iniciar uma análise demonstrativa.
-
-🔤 Análise de Similaridade
-
-A aplicação simula a identificação de possíveis similaridades e conflitos entre 
-o nome pesquisado e marcas existentes na base demonstrativa.
-
-📊 Classificação de Risco
-
-O resultado é apresentado utilizando diferentes níveis de risco para facilitar 
-a interpretação das informações.
-
-📄 Relatório
-
-A aplicação organiza os resultados da análise em um relatório contendo:
-
-- Classificação de risco
-- Possíveis conflitos
-- Informações da análise
-- Recomendações demonstrativas
-- Próximos passos
-
-📥 Exportação para PDF
-
-O relatório pode ser exportado em PDF utilizando **jsPDF** e **html2canvas**.
+Antes de qualquer pedido real de registro de marca, devem ser consultadas as fontes oficiais aplicáveis e, quando necessário, profissionais especializados.
 
 ---
 
-## 💳 Modelo SaaS
+## 🎯 Problema
 
-O projeto também explora conceitualmente uma estratégia de produto baseada em 
-diferentes níveis de serviço.
+O processo de registro de uma marca pode envolver diferentes etapas:
 
-**Básico**
+```text
+Ideia da Marca
+      ↓
+Definição do Nome
+      ↓
+Classificação
+      ↓
+Pesquisa de Anterioridade
+      ↓
+Avaliação de Risco
+      ↓
+Decisão
+      ↓
+Pedido de Registro
+      ↓
+Acompanhamento
+```
 
-Experiência inicial de análise e geração de relatório.
+Para usuários sem conhecimento especializado, essa jornada pode parecer complexa.
 
-**Profissional**
+O SMART explora uma pergunta de produto:
 
-Conceito de funcionalidades adicionais, como integração com fontes externas e 
-monitoramento.
-
-**Premium**
-
-Conceito de funcionalidades avançadas e integrações.
-
-> Alguns recursos apresentados nos planos fazem parte da visão de produto e são 
-> simulados na versão atual.
+> **Como transformar uma jornada técnica e complexa em uma experiência digital mais simples, orientada e compreensível?**
 
 ---
 
-## 🔄 Fluxo da Aplicação
+## 💡 Proposta de Solução
 
-````text
+A proposta conceitual do SMART é criar uma camada digital que organize a jornada inicial do usuário.
+
+```text
 Usuário
    ↓
 Nome da Marca
    ↓
-Seleção da Classe
+Classe de Nice
    ↓
 Análise Demonstrativa
    ↓
-Comparação com Base Simulada
-   ↓
-Identificação de Similaridades
-   ↓
 Classificação de Risco
    ↓
-Relatório
+Pontos de Atenção
    ↓
 Recomendações
    ↓
-Exportação PDF
+Próximos Passos
+```
 
-````
+A aplicação atual implementa essa experiência como um **protótipo funcional**, permitindo validar conceitos de interface, navegação, regras de negócio e modelo SaaS.
 
 ---
 
-## 🏗️ Arquitetura Atual
+# 🧠 Product Thinking
 
+O projeto não foi concebido apenas como uma página Front-end.
+
+Sua estrutura procura simular diferentes componentes de um produto digital:
+
+```text
+Problema
+   ↓
+Usuário
+   ↓
+Jornada
+   ↓
+Funcionalidade
+   ↓
+Regra de Negócio
+   ↓
+Interface
+   ↓
+Plano
+   ↓
+Conversão
+   ↓
+Retenção
+```
+
+Isso permite explorar conceitos relacionados a:
+
+- Product Discovery;
+- Product Thinking;
+- experiência do usuário;
+- modelo SaaS;
+- planos de assinatura;
+- freemium;
+- jornada de upgrade;
+- monetização;
+- persistência de estado;
+- roadmap de produto.
+
+---
+
+# 🔍 Análise Demonstrativa
+
+O usuário informa:
+
+```text
+Nome da Marca
+      +
+Classe de Nice
+```
+
+A aplicação gera um **score determinístico demonstrativo**.
+
+Isso significa que a mesma combinação de:
+
+```text
+Marca + Classe
+```
+
+gera sempre o mesmo resultado dentro da lógica atual.
+
+O score é utilizado para classificar o risco demonstrativo em três níveis:
+
+```text
+0 ───────────── 33
+      BAIXO
+
+34 ──────────── 66
+     MODERADO
+
+67 ──────────── 99
+       ALTO
+```
+
+Essa lógica substitui uma geração puramente aleatória e torna a experiência reproduzível.
+
+---
+
+# 📊 Classificação de Risco
+
+A aplicação trabalha com três classificações demonstrativas.
+
+### 🟢 Baixo
+
+A simulação não identifica conflito relevante dentro da lógica demonstrativa.
+
+O sistema ainda recomenda pesquisa oficial antes de qualquer decisão.
+
+### 🟡 Moderado
+
+A simulação identifica características que justificariam análise complementar.
+
+O usuário recebe recomendações para aprofundar a pesquisa.
+
+### 🔴 Alto
+
+A simulação identifica alto nível de similaridade dentro da base demonstrativa.
+
+A interface recomenda análise mais detalhada antes de qualquer decisão sobre registro.
+
+---
+
+# 🗂️ Classes de Nice
+
+O SMART disponibiliza as **45 Classes de Nice** para seleção dentro da experiência.
+
+As classes organizam produtos e serviços em diferentes categorias.
+
+Exemplo:
+
+```text
+Marca:
+Prime Performance
+
+Classe:
+35 — Publicidade; gestão de negócios comerciais.
+```
+
+A classe selecionada participa da geração do score demonstrativo juntamente com o nome da marca.
+
+---
+
+# 💡 Recomendações e Próximos Passos
+
+Depois da análise, a interface apresenta três blocos:
+
+```text
+🔎 Pontos de Atenção
+        ↓
+💡 Recomendações Demonstrativas
+        ↓
+📋 Próximos Passos
+```
+
+A intenção é demonstrar como um produto poderia ir além de simplesmente apresentar um score.
+
+O objetivo da experiência é transformar um resultado em **orientação para uma próxima ação**.
+
+---
+
+# 💳 Modelo SaaS Demonstrativo
+
+O SMART também simula uma estrutura de planos:
+
+| Plano | Papel no Protótipo |
+|---|---|
+| **Básico** | Entrada na experiência |
+| **Profissional** | Demonstração de funcionalidades intermediárias |
+| **Premium** | Demonstração de recursos avançados |
+
+A interface permite navegar entre esses níveis por meio de uma jornada de upgrade.
+
+---
+
+# 🔄 Jornada de Upgrade
+
+O fluxo demonstrativo funciona da seguinte forma:
+
+```text
+Plano Básico
+     ↓
+Escolha do Upgrade
+     ↓
+Profissional / Premium
+     ↓
+Página de Contratação
+     ↓
+Método de Pagamento
+     ↓
+Simulação
+     ↓
+Confirmação
+     ↓
+Plano Ativado
+     ↓
+Retorno ao SMART
+```
+
+Nenhuma transação financeira real é realizada.
+
+---
+
+# 💰 Simulação de Pagamento
+
+O protótipo apresenta três métodos:
+
+```text
+💳 Cartão
+⚡ Pix
+📄 Boleto
+```
+
+Todos possuem finalidade exclusivamente demonstrativa.
+
+### Cartão
+
+Simula:
+
+- dados do cartão;
+- parcelamento;
+- confirmação da contratação.
+
+Nenhum dado é enviado para um gateway.
+
+### Pix
+
+Demonstra como uma futura implementação poderia disponibilizar um QR Code ou código Pix.
+
+### Boleto
+
+Demonstra conceitualmente como um boleto poderia ser integrado ao fluxo.
+
+Nenhum boleto real é emitido.
+
+---
+
+# 💾 Persistência do Plano
+
+Depois da simulação de upgrade, o plano escolhido é armazenado utilizando:
+
+```javascript
+localStorage
+```
+
+Fluxo:
+
+```text
+Usuário escolhe Premium
+        ↓
+Simula contratação
+        ↓
+localStorage
+        ↓
+Retorna ao SMART
+        ↓
+Plano Premium recuperado
+        ↓
+Atualização da interface
+```
+
+Isso permite que o plano continue ativo mesmo após a atualização da página no mesmo navegador.
+
+---
+
+# 📄 Exportação para PDF
+
+O plano Premium demonstra a exportação do resultado da análise para PDF.
+
+A implementação utiliza:
+
+```text
+html2canvas
+      +
+jsPDF
+```
+
+Fluxo:
+
+```text
+Resultado da Análise
+        ↓
+Captura HTML
+        ↓
+Canvas
+        ↓
+Imagem
+        ↓
+jsPDF
+        ↓
+Relatório PDF
+```
+
+O arquivo recebe um nome baseado na marca analisada.
+
+---
+
+# 🛡️ Tratamento de Estados e Validações
+
+A aplicação possui diferentes verificações para evitar comportamentos inconsistentes.
+
+Entre elas:
+
+- validação do nome da marca;
+- validação da Classe de Nice;
+- validação dos planos disponíveis;
+- tratamento de parâmetros inesperados na URL;
+- prevenção de duplicação das Classes de Nice;
+- persistência segura do plano;
+- validação antes da geração do PDF;
+- mensagens quando recursos externos não estão disponíveis.
+
+---
+
+# 🧠 Arquitetura Atual
+
+```text
+┌──────────────────────────┐
+│         Usuário          │
+└────────────┬─────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│        index.html        │
+│     Interface SMART      │
+└────────────┬─────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│        script.js         │
+│ Regras + Estado + Fluxo  │
+└───────┬──────────┬───────┘
+        │          │
+        ▼          ▼
+┌──────────────┐ ┌──────────────┐
+│   data.js    │ │ localStorage │
+│ Nice Classes │ │ Plano Atual  │
+└──────────────┘ └──────────────┘
+        │
+        ▼
+┌──────────────────────────┐
+│    Análise Simulada      │
+│ Score + Classificação    │
+└──────────────────────────┘
+
+          +
+
+┌──────────────────────────┐
+│     pagamento.html       │
+│ Jornada de Upgrade SaaS  │
+└────────────┬─────────────┘
+             │
+             ▼
+┌──────────────────────────┐
+│      pagamento.js        │
+│ Simulação de Contratação │
+└──────────────────────────┘
+```
+
+---
+
+# 🤖 Roadmap de Inteligência Artificial
+
+Embora o nome original do repositório faça referência a um agente de IA, **a versão atual não implementa um modelo de Inteligência Artificial**.
+
+A IA faz parte do roadmap conceitual do produto.
+
+Uma possível evolução poderia utilizar:
+
+```text
+Nome da Marca
+      ↓
+Normalização
+      ↓
+Pesquisa em Base Oficial
+      ↓
+NLP / Embeddings
+      ↓
+Similaridade Semântica
+      ↓
+Similaridade Fonética
+      ↓
+Regras de Negócio
+      ↓
+Classificação de Risco
+      ↓
+LLM
+      ↓
+Explicação do Resultado
+```
+
+---
+
+## 🧠 Possível Arquitetura Futura com IA
+
+```text
                 ┌─────────────────┐
                 │     Usuário     │
                 └────────┬────────┘
-                         ↓
+                         │
+                         ▼
                 ┌─────────────────┐
-                │    Interface    │
-                │ HTML / CSS / JS │
+                │    Front-end    │
                 └────────┬────────┘
-                         ↓
+                         │
+                         ▼
                 ┌─────────────────┐
-                │    data.js      │
-                │ Base simulada   │
+                │   API / Backend │
                 └────────┬────────┘
-                         ↓
+                         │
+             ┌───────────┼───────────┐
+             │           │           │
+             ▼           ▼           ▼
+      ┌────────────┐ ┌─────────┐ ┌───────────┐
+      │ Base Oficial│ │   NLP   │ │   LLM     │
+      └─────┬──────┘ └────┬────┘ └─────┬─────┘
+            │             │             │
+            └─────────────┼─────────────┘
+                          │
+                          ▼
                 ┌─────────────────┐
-                │ Lógica de       │
-                │ análise         │
+                │ Risk Engine     │
                 └────────┬────────┘
-                         ↓
+                         │
+                         ▼
                 ┌─────────────────┐
-                │   Relatório     │
-                └────────┬────────┘
-                         ↓
-                ┌─────────────────┐
-                │ jsPDF / Canvas  │
+                │ Recomendações   │
                 └─────────────────┘
+```
 
 ---
 
-## 🛠️ Tecnologias
+# 🚀 Roadmap do Produto
 
-**HTML5** - Estrutura da interface
+Possíveis evoluções do SMART:
 
-**CSS3** - Design e responsividade 
+### Dados
 
-**JavaScript** - Lógica e interatividade
+- integração com fontes oficiais;
+- armazenamento de pesquisas;
+- histórico de análises;
+- banco de dados;
+- monitoramento de marcas.
 
-**data.js** - Dados utilizados na simulação
+### Inteligência Artificial
 
-**jsPDF** - Geração do relatório em PDF
+- NLP;
+- embeddings;
+- busca semântica;
+- similaridade fonética;
+- LLMs;
+- RAG;
+- geração de explicações;
+- classificação assistida por IA.
 
-**html2canvas** - Captura da interface para exportação
+### Backend
 
-**Vercel** - Deploy da aplicação
+- API REST;
+- autenticação;
+- gerenciamento de usuários;
+- persistência em banco;
+- logging;
+- segurança;
+- testes automatizados.
+
+### SaaS
+
+- autenticação;
+- planos reais;
+- gateway de pagamento;
+- billing;
+- assinatura;
+- limites de uso;
+- dashboard do cliente.
+
+### Produto
+
+- onboarding;
+- histórico;
+- notificações;
+- acompanhamento;
+- métricas de produto;
+- analytics;
+- testes A/B.
 
 ---
 
-## 📂 Estrutura do Projeto
+# 🛠️ Tecnologias
+
+| Tecnologia | Aplicação |
+|---|---|
+| **HTML5** | Estrutura da interface |
+| **CSS3** | Estilização e experiência visual |
+| **JavaScript** | Regras de negócio e interatividade |
+| **LocalStorage** | Persistência do plano demonstrativo |
+| **jsPDF** | Geração de PDF |
+| **html2canvas** | Captura do resultado para exportação |
+| **Git** | Controle de versão |
+| **GitHub** | Repositório e documentação |
+| **Vercel** | Deploy da aplicação |
+
+---
+
+# 📂 Estrutura do Projeto
 
 ```text
 Agente-de-IA-Para-Registro-de-Marcas/
@@ -205,6 +600,7 @@ Agente-de-IA-Para-Registro-de-Marcas/
 ├── index.html
 ├── style.css
 ├── script.js
+│
 ├── data.js
 │
 ├── pagamento.html
@@ -212,139 +608,178 @@ Agente-de-IA-Para-Registro-de-Marcas/
 ├── pagamento.js
 │
 └── README.md
-
 ```
----
-
-## 💡 Competências Demonstradas
-
-- JavaScript
-- HTML5
-- CSS3
-- Desenvolvimento Front-end
-- Responsive Web Design
-- Manipulação do DOM
-- Product Thinking
-- UX/UI
-- Modelagem conceitual SaaS
-- Geração de relatórios
-- Exportação para PDF
-- Prototipação de produtos digitais
-- Deploy com Vercel
-- Git e GitHub
 
 ---
 
-## 🚀 Roadmap
+# ▶️ Executando o Projeto
 
-Uma evolução futura do SMART poderia transformar o protótipo em uma aplicação 
-com integrações e processamento reais.
+Por ser uma aplicação Front-end estática, o SMART não exige instalação de dependências para sua execução básica.
 
-Possibilidades:
+## 1. Clone o repositório
 
-- Backend estruturado
-- Banco de dados
-- Autenticação
-- Gestão de usuários
-- Persistência das pesquisas
-- Integração com fontes oficiais disponíveis
-- Busca textual avançada
-- Algoritmos de similaridade
-- NLP para comparação semântica
-- APIs
-- Histórico de pesquisas
-- Dashboard
-- Monitoramento de processos
+```bash
+git clone https://github.com/MCLG1661/Agente-de-IA-Para-Registro-de-Marcas.git
+```
 
----
+## 2. Entre no diretório
 
-## 🤖 Evolução para Inteligência Artificial
+```bash
+cd Agente-de-IA-Para-Registro-de-Marcas
+```
 
-Uma futura camada de IA poderia ser utilizada para apoiar tarefas como:
+## 3. Execute
+
+Abra:
 
 ```text
-Nome / Marca
-     ↓
-Processamento de Texto
-     ↓
-NLP
-     ↓
-Similaridade Fonética
-     ↓
-Similaridade Semântica
-     ↓
-Identificação de Padrões
-     ↓
-Organização dos Resultados
-     ↓
-Apoio à Análise
-
+index.html
 ```
-Essa arquitetura representa uma **possível evolução do projeto** e não a 
-implementação existente na versão atual.
+
+em um navegador moderno.
+
+Também é possível utilizar uma extensão como **Live Server** no VS Code.
 
 ---
 
-## ⚠️ Escopo e Limitações
+# 🌐 Aplicação Online
 
-O SMART é um **protótipo tecnológico e demonstrativo**.
+O protótipo está publicado na Vercel:
 
-A versão atual utiliza lógica Front-end e dados de demonstração para simular 
-funcionalidades de uma possível plataforma de análise de marcas.
+**SMART — Plataforma Inteligente para Análise de Marcas**
 
-O sistema :
-
-- Não realiza pesquisa oficial de registro de marcas
-- Não possui conexão real com o INPI na versão atual
-- Não oferece parecer jurídico
-- Não garante disponibilidade ou possibilidade de registro
-- Não substitui pesquisa oficial ou análise profissional
-
-O objetivo do projeto é demonstrar conceitos relacionados a **desenvolvimento web, 
-automação, UX, Product Thinking e prototipação de uma solução SaaS**.
+https://agente-especialista-em-registro-de.vercel.app/
 
 ---
 
-## 🤝 Como Contribuir
+# 💼 Competências Demonstradas
 
-Contribuições e sugestões são bem-vindas para a evolução técnica do **SMART**.
+## Front-end Development
 
-Possíveis áreas de contribuição :
+- HTML;
+- CSS;
+- JavaScript;
+- DOM;
+- eventos;
+- manipulação de estado;
+- navegação entre páginas.
 
-- Algoritmos de similaridade textual
-- NLP
-- Melhorias de UX/UI
-- Backend
-- APIs
-- Banco de dados
-- Testes automatizados
-- Acessibilidade
-- Segurança
-- Arquitetura SaaS
+## JavaScript
 
-Para contribuir :
+- funções;
+- arrays;
+- objetos;
+- eventos;
+- validações;
+- `localStorage`;
+- `URLSearchParams`;
+- manipulação do DOM;
+- lógica determinística;
+- tratamento de estados.
 
-1. Faça um Fork do projeto
-2. Crie uma branch para sua funcionalidade
-3. Implemente e teste as alterações
-4. Faça o commit
-5. Envie sua branch
-6. Abra um Pull Request descrevendo a melhoria realizada
+## Product Thinking
+
+- identificação de problema;
+- jornada do usuário;
+- definição de funcionalidades;
+- estrutura de planos;
+- freemium;
+- upgrade;
+- monetização;
+- roadmap.
+
+## UX
+
+- formulários;
+- feedback visual;
+- classificação de risco;
+- recomendações;
+- mensagens de segurança;
+- navegação;
+- estados da aplicação.
+
+## SaaS
+
+- planos;
+- pricing demonstrativo;
+- upgrade;
+- fluxo de pagamento;
+- persistência de plano;
+- funcionalidades segmentadas.
+
+## Engenharia de Software
+
+- Git;
+- GitHub;
+- separação de responsabilidades;
+- validações;
+- documentação;
+- deploy.
 
 ---
 
-## 👨‍💻 Autor
+# 📈 Visão de Negócio
+
+O SMART também demonstra como uma ideia pode ser estruturada a partir de diferentes perspectivas:
+
+```text
+Necessidade do Usuário
+        ↓
+Problema de Negócio
+        ↓
+Proposta de Valor
+        ↓
+Produto Digital
+        ↓
+Experiência
+        ↓
+Tecnologia
+        ↓
+Modelo SaaS
+        ↓
+Roadmap
+```
+
+Essa abordagem aproxima **negócio, produto e tecnologia**, tratando o código como parte de uma solução e não como objetivo isolado.
+
+---
+
+# ⚖️ Disclaimer
+
+Este projeto possui finalidade exclusivamente **educacional, demonstrativa e de portfólio**.
+
+O SMART:
+
+- não é uma ferramenta oficial do INPI;
+- não possui vínculo com o INPI;
+- não substitui pesquisa oficial de anterioridade;
+- não fornece parecer jurídico;
+- não garante disponibilidade ou registrabilidade de marcas;
+- não processa pagamentos reais;
+- não utiliza Inteligência Artificial na versão atual.
+
+Os resultados apresentados são simulados e não devem ser utilizados para tomada de decisão jurídica ou comercial sobre registro de marcas.
+
+---
+
+# 👨‍💻 Autor
 
 **Marcus Guedes**
 
 Marketing | Data Science | Inteligência Artificial | Gestão de Projetos
 
-GitHub: MCLG1661  
-LinkedIn: Marcus Guedes
+**GitHub:** [MCLG1661](https://github.com/MCLG1661)
+
+**LinkedIn:** [Marcus Guedes](https://www.linkedin.com/in/marcusguedes/)
 
 ---
 
-®️ **SMART — Tecnologia aplicada à transformação de processos em experiências digitais.**
+## ⭐ Sobre este Projeto
 
+O SMART representa a exploração de uma ideia de produto desde o **problema de negócio até um protótipo funcional**, conectando:
 
+**Product Thinking + UX + JavaScript + SaaS + visão de evolução para Inteligência Artificial.**
 
+---
+
+🚀 **Transformando problemas de negócio em produtos digitais e experiências orientadas por tecnologia.**
