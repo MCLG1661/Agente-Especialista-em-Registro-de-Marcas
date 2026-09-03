@@ -1,213 +1,454 @@
-let currentPlan = 'Básico'; // Plano inicial
-const plans = ['Básico', 'Profissional', 'Premium'];
+// ==========================================================
+// SMART
+// Sistema de Marcas Assistido por Redes de Tecnologia Artificial
+// Protótipo demonstrativo para análise inicial de marcas
+// ==========================================================
 
-document.addEventListener('DOMContentLoaded', () => {
-    // Inicializa o estado dos botões de plano
-    updatePlanUI();
+
+// ----------------------------------------------------------
+// CONFIGURAÇÃO DOS PLANOS
+// ----------------------------------------------------------
+
+let currentPlan = "Básico";
+
+const plans = ["Básico", "Profissional", "Premium"];
+
+
+// ----------------------------------------------------------
+// INICIALIZAÇÃO DA APLICAÇÃO
+// ----------------------------------------------------------
+
+document.addEventListener("DOMContentLoaded", () => {
     populateClassSelect();
-
-    // Adiciona listeners para os botões de upgrade
-    document.getElementById('planBtn-Profissional').addEventListener('click', () => {
-        iniciarUpgrade('Profissional');
-    });
-
-    document.getElementById('planBtn-Premium').addEventListener('click', () => {
-        iniciarUpgrade('Premium');
-    });
+    configurePlanButtons();
+    updatePlanUI();
 });
 
 
-/**
- * Altera o plano do usuário entre 'Básico' e 'Premium'.
- * @param {string} newPlan - O novo plano a ser ativado.
- */
+// ----------------------------------------------------------
+// CONFIGURAÇÃO DOS BOTÕES DE PLANOS
+// ----------------------------------------------------------
+
+function configurePlanButtons() {
+    const basicButton = document.getElementById("planBtn-Básico");
+    const professionalButton = document.getElementById("planBtn-Profissional");
+    const premiumButton = document.getElementById("planBtn-Premium");
+
+    if (basicButton) {
+        basicButton.addEventListener("click", () => {
+            changePlan("Básico");
+        });
+    }
+
+    if (professionalButton) {
+        professionalButton.addEventListener("click", () => {
+            iniciarUpgrade("Profissional");
+        });
+    }
+
+    if (premiumButton) {
+        premiumButton.addEventListener("click", () => {
+            iniciarUpgrade("Premium");
+        });
+    }
+}
+
+
+// ----------------------------------------------------------
+// ALTERAÇÃO DO PLANO
+// ----------------------------------------------------------
+
 function changePlan(newPlan) {
-    if (currentPlan === newPlan) {
-        console.log(`O plano já é ${newPlan}.`);
+    if (!plans.includes(newPlan)) {
+        console.warn(`Plano inválido: ${newPlan}`);
         return;
     }
 
     currentPlan = newPlan;
-    console.log(`Plano alterado para: ${currentPlan}`);
+
+    console.log(`Plano demonstrativo selecionado: ${currentPlan}`);
 
     updatePlanUI();
 }
 
-/**
- * Atualiza a interface do usuário para refletir o plano atual.
- */
+
+// ----------------------------------------------------------
+// ATUALIZAÇÃO DA INTERFACE DO PLANO
+// ----------------------------------------------------------
+
 function updatePlanUI() {
-    const planNameEl = document.getElementById('planName');
-    const appContainer = document.getElementById('app-container');
+    const planNameEl = document.getElementById("planName");
+    const appContainer = document.getElementById("app-container");
 
     if (planNameEl) {
         planNameEl.textContent = currentPlan;
     }
 
-    if (appContainer) {
-        // Remove todas as classes de plano existentes
-        appContainer.classList.remove('plan-basico', 'plan-profissional', 'plan-premium');
-        
-        // Adiciona a classe do plano atual
-        if (currentPlan === 'Profissional') {
-            appContainer.classList.add('plan-profissional');
-        } else if (currentPlan === 'Premium') {
-            appContainer.classList.add('plan-premium');
-        } else {
-            appContainer.classList.add('plan-basico');
-        }
-
-        // Atualiza o estado dos botões
-        plans.forEach(plan => {
-            document.getElementById(`planBtn-${plan}`).disabled = (currentPlan === plan);
-        });
-    }
-}
-
-/**
- * Popula o dropdown de classes de Nice.
- */
-function populateClassSelect() {
-    const classeSelect = document.getElementById('classeSelect');
-    if (classeSelect && typeof niceClasses !== 'undefined') {
-        niceClasses.forEach(cls => {
-            const option = document.createElement('option');
-            option.value = cls.id;
-            option.textContent = `Classe ${cls.id}: ${cls.description}`;
-            classeSelect.appendChild(option);
-        });
-    }
-}
-
-// Funções existentes (simuladas, já que o arquivo original não foi fornecido)
-function analisarMarca() {
-    const marcaInput = document.getElementById('marcaInput');
-    if (!marcaInput.value) {
-        alert('Por favor, digite o nome da marca para análise.');
+    if (!appContainer) {
         return;
     }
 
-    if (currentPlan === 'Básico' || currentPlan === 'Profissional') {
-        const isPremiumFeature = Math.random() > 0.5; // Simula uma funcionalidade premium
-        if (isPremiumFeature) {
-            alert('Esta análise avançada requer um plano superior. Por favor, faça o upgrade para continuar.');
-            return;
-        }
+    appContainer.classList.remove(
+        "plan-basico",
+        "plan-profissional",
+        "plan-premium"
+    );
+
+    if (currentPlan === "Profissional") {
+        appContainer.classList.add("plan-profissional");
+    } else if (currentPlan === "Premium") {
+        appContainer.classList.add("plan-premium");
+    } else {
+        appContainer.classList.add("plan-basico");
     }
 
-    console.log(`Analisando a marca: ${marcaInput.value} com o plano ${currentPlan}`);
-    // Lógica de análise...
-    document.getElementById('resultado').classList.add('hidden');
-    document.getElementById('loading').classList.remove('hidden');
-    
-    setTimeout(() => {
-        document.getElementById('loading').classList.add('hidden');
-        document.getElementById('resultado').classList.remove('hidden');
-        document.getElementById('nomeMarca').textContent = marcaInput.value;
-        
-        // Simulação de Resultados
-        const riscos = ['low', 'medium', 'high'];
-        // Peso aleatório para o risco
-        const riscoAleatorio = riscos[Math.floor(Math.random() * riscos.length)];
-        
-        const badge = document.getElementById('riskBadge');
-        const conflitosList = document.getElementById('conflitosList');
-        const sugestoesList = document.getElementById('sugestoesList');
-        const proximosPassos = document.getElementById('proximosPassos');
+    plans.forEach((plan) => {
+        const button = document.getElementById(`planBtn-${plan}`);
 
-        // Limpar listas anteriores
-        conflitosList.innerHTML = '';
-        sugestoesList.innerHTML = '';
-        proximosPassos.innerHTML = '';
-
-        let dadosResultado;
-
-        if (riscoAleatorio === 'high') {
-            badge.className = 'risk-badge risk-high';
-            badge.textContent = 'Risco Alto';
-            dadosResultado = {
-                conflitos: ['Marca foneticamente idêntica encontrada na classe selecionada.', 'Termo descritivo de uso comum.'],
-                sugestoes: ['Considere alterar o nome da marca.', 'Adicione um elemento figurativo distintivo.'],
-                passos: ['Consultar um advogado especializado.', 'Realizar busca aprofundada de anterioridade.']
-            };
-        } else if (riscoAleatorio === 'medium') {
-            badge.className = 'risk-badge risk-medium';
-            badge.textContent = 'Risco Moderado';
-            dadosResultado = {
-                conflitos: ['Marcas com radical similar em classes correlatas.', 'Possível oposição de terceiros.'],
-                sugestoes: ['Monitorar o processo semanalmente.', 'Registrar também a forma mista (logo).'],
-                passos: ['Preparar documentação para depósito.', 'Aguardar prazo de oposição.']
-            };
-        } else {
-            badge.className = 'risk-badge risk-low';
-            badge.textContent = 'Risco Baixo';
-            dadosResultado = {
-                conflitos: ['Nenhum conflito direto encontrado na base do INPI.'],
-                sugestoes: ['Iniciar o processo de registro imediatamente.', 'Garantir domínios de internet (.com.br).'],
-                passos: ['Protocolar pedido no INPI.', 'Pagar a GRU inicial.']
-            };
+        if (button) {
+            button.disabled = currentPlan === plan;
         }
+    });
+}
 
-        // Preencher HTML
-        const createListItems = (items, container) => {
-            items.forEach(item => {
-                const p = document.createElement('p');
-                p.textContent = `• ${item}`;
-                container.appendChild(p);
-            });
+
+// ----------------------------------------------------------
+// CLASSES DE NICE
+// ----------------------------------------------------------
+
+function populateClassSelect() {
+    const classeSelect = document.getElementById("classeSelect");
+
+    if (!classeSelect || typeof niceClasses === "undefined") {
+        return;
+    }
+
+    // Evita duplicação das opções caso a função seja executada novamente.
+    classeSelect.innerHTML =
+        '<option value="">Selecione a classe de produtos/serviços...</option>';
+
+    niceClasses.forEach((cls) => {
+        const option = document.createElement("option");
+
+        option.value = cls.id;
+        option.textContent = `Classe ${cls.id}: ${cls.description}`;
+
+        classeSelect.appendChild(option);
+    });
+}
+
+
+// ----------------------------------------------------------
+// GERAÇÃO DETERMINÍSTICA DE SCORE DEMONSTRATIVO
+// ----------------------------------------------------------
+
+function gerarScoreDemonstrativo(nomeMarca, classe) {
+    const texto = `${nomeMarca.toLowerCase().trim()}-${classe}`;
+
+    let hash = 0;
+
+    for (let i = 0; i < texto.length; i++) {
+        hash = (hash * 31 + texto.charCodeAt(i)) >>> 0;
+    }
+
+    return hash % 100;
+}
+
+
+// ----------------------------------------------------------
+// CLASSIFICAÇÃO DO RISCO
+// ----------------------------------------------------------
+
+function classificarRisco(score) {
+    if (score >= 67) {
+        return "high";
+    }
+
+    if (score >= 34) {
+        return "medium";
+    }
+
+    return "low";
+}
+
+
+// ----------------------------------------------------------
+// ANÁLISE DEMONSTRATIVA
+// ----------------------------------------------------------
+
+function analisarMarca() {
+    const marcaInput = document.getElementById("marcaInput");
+    const classeSelect = document.getElementById("classeSelect");
+
+    const nomeMarca = marcaInput.value.trim();
+    const classe = classeSelect.value;
+
+    if (!nomeMarca) {
+        alert("Digite o nome da marca para iniciar a análise demonstrativa.");
+        marcaInput.focus();
+        return;
+    }
+
+    if (!classe) {
+        alert("Selecione uma classe de produtos ou serviços.");
+        classeSelect.focus();
+        return;
+    }
+
+    const resultado = document.getElementById("resultado");
+    const loading = document.getElementById("loading");
+
+    resultado.classList.add("hidden");
+    loading.classList.remove("hidden");
+
+    console.log(
+        `Executando análise demonstrativa da marca "${nomeMarca}" na classe ${classe}.`
+    );
+
+    setTimeout(() => {
+        loading.classList.add("hidden");
+
+        executarAnaliseDemonstrativa(
+            nomeMarca,
+            classe
+        );
+
+        resultado.classList.remove("hidden");
+    }, 900);
+}
+
+
+// ----------------------------------------------------------
+// EXECUÇÃO DA SIMULAÇÃO
+// ----------------------------------------------------------
+
+function executarAnaliseDemonstrativa(nomeMarca, classe) {
+    const score = gerarScoreDemonstrativo(
+        nomeMarca,
+        classe
+    );
+
+    const risco = classificarRisco(score);
+
+    const nomeMarcaElement = document.getElementById("nomeMarca");
+    const badge = document.getElementById("riskBadge");
+    const conflitosList = document.getElementById("conflitosList");
+    const sugestoesList = document.getElementById("sugestoesList");
+    const proximosPassos = document.getElementById("proximosPassos");
+
+    nomeMarcaElement.textContent = nomeMarca;
+
+    conflitosList.innerHTML = "";
+    sugestoesList.innerHTML = "";
+    proximosPassos.innerHTML = "";
+
+    let dadosResultado;
+
+    if (risco === "high") {
+        badge.className = "risk-badge risk-high";
+        badge.textContent = "Risco Demonstrativo: Alto";
+
+        dadosResultado = {
+            conflitos: [
+                "A simulação identificou alto nível de similaridade na base demonstrativa.",
+                "O nome apresenta características que justificariam uma pesquisa de anterioridade mais detalhada."
+            ],
+
+            sugestoes: [
+                "Avaliar variações mais distintivas para o nome pretendido.",
+                "Realizar pesquisa oficial antes de qualquer decisão sobre registro."
+            ],
+
+            passos: [
+                "Consultar as ferramentas oficiais disponíveis para pesquisa de marcas.",
+                "Considerar orientação profissional especializada antes do depósito."
+            ]
         };
 
-        createListItems(dadosResultado.conflitos, conflitosList);
-        createListItems(dadosResultado.sugestoes, sugestoesList);
-        createListItems(dadosResultado.passos, proximosPassos);
+    } else if (risco === "medium") {
+        badge.className = "risk-badge risk-medium";
+        badge.textContent = "Risco Demonstrativo: Moderado";
 
-    }, 2000);
+        dadosResultado = {
+            conflitos: [
+                "A simulação identificou elementos potencialmente semelhantes na base demonstrativa.",
+                "O resultado indica necessidade de análise complementar."
+            ],
+
+            sugestoes: [
+                "Pesquisar grafias, radicais e expressões semelhantes.",
+                "Verificar marcas relacionadas à classe selecionada."
+            ],
+
+            passos: [
+                "Realizar pesquisa oficial de anterioridade.",
+                "Avaliar os resultados antes de iniciar eventual pedido de registro."
+            ]
+        };
+
+    } else {
+        badge.className = "risk-badge risk-low";
+        badge.textContent = "Risco Demonstrativo: Baixo";
+
+        dadosResultado = {
+            conflitos: [
+                "A simulação não identificou conflito relevante na base demonstrativa."
+            ],
+
+            sugestoes: [
+                "Mesmo com risco demonstrativo baixo, realize pesquisa oficial de anterioridade.",
+                "Avalie também aspectos nominativos, figurativos e mercadológicos da marca."
+            ],
+
+            passos: [
+                "Consultar as fontes oficiais aplicáveis.",
+                "Confirmar a estratégia de proteção antes de eventual pedido de registro."
+            ]
+        };
+    }
+
+    preencherLista(
+        dadosResultado.conflitos,
+        conflitosList
+    );
+
+    preencherLista(
+        dadosResultado.sugestoes,
+        sugestoesList
+    );
+
+    preencherLista(
+        dadosResultado.passos,
+        proximosPassos
+    );
 }
+
+
+// ----------------------------------------------------------
+// PREENCHIMENTO DAS LISTAS
+// ----------------------------------------------------------
+
+function preencherLista(items, container) {
+    items.forEach((item) => {
+        const paragraph = document.createElement("p");
+
+        paragraph.textContent = `• ${item}`;
+
+        container.appendChild(paragraph);
+    });
+}
+
+
+// ----------------------------------------------------------
+// LIMPAR PESQUISA
+// ----------------------------------------------------------
 
 function limparPesquisa() {
-    document.getElementById('marcaInput').value = '';
-    document.getElementById('classeSelect').value = '';
-    document.getElementById('resultado').classList.add('hidden');
-    console.log('Pesquisa limpa.');
+    const marcaInput = document.getElementById("marcaInput");
+    const classeSelect = document.getElementById("classeSelect");
+    const resultado = document.getElementById("resultado");
+    const loading = document.getElementById("loading");
+
+    marcaInput.value = "";
+    classeSelect.value = "";
+
+    resultado.classList.add("hidden");
+    loading.classList.add("hidden");
+
+    marcaInput.focus();
 }
+
+
+// ----------------------------------------------------------
+// EXPORTAÇÃO PARA PDF
+// ----------------------------------------------------------
 
 function exportarPDF() {
-    if (currentPlan !== 'Premium') {
-        alert('A exportação de PDF é uma funcionalidade do plano Premium. Por favor, faça o upgrade.');
+    if (currentPlan !== "Premium") {
+        alert(
+            "A exportação para PDF representa uma funcionalidade Premium no protótipo SMART."
+        );
         return;
     }
-    
-    const elemento = document.getElementById('resultado');
-    const nomeMarca = document.getElementById('nomeMarca').textContent || 'Relatorio';
 
-    if (window.jspdf && window.html2canvas) {
-        window.html2canvas(elemento).then(canvas => {
-            const imgData = canvas.toDataURL('image/png');
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
-            const imgProps = doc.getImageProperties(imgData);
-            const pdfWidth = doc.internal.pageSize.getWidth();
-            const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-            
-            doc.addImage(imgData, 'PNG', 0, 10, pdfWidth, pdfHeight);
-            doc.save(`Analise_Marca_${nomeMarca}.pdf`);
-        });
-    } else {
-        alert('Erro ao carregar bibliotecas de PDF.');
+    const elemento = document.getElementById("resultado");
+
+    const nomeMarca =
+        document.getElementById("nomeMarca").textContent.trim() ||
+        "Relatorio";
+
+    if (!elemento || elemento.classList.contains("hidden")) {
+        alert("Execute uma análise antes de gerar o relatório.");
+        return;
     }
+
+    if (!window.jspdf || !window.html2canvas) {
+        alert(
+            "Não foi possível carregar os recursos necessários para gerar o PDF."
+        );
+        return;
+    }
+
+    window.html2canvas(elemento).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
+
+        const { jsPDF } = window.jspdf;
+
+        const doc = new jsPDF();
+
+        const imgProps = doc.getImageProperties(imgData);
+
+        const pdfWidth =
+            doc.internal.pageSize.getWidth();
+
+        const margin = 10;
+
+        const availableWidth =
+            pdfWidth - margin * 2;
+
+        const pdfHeight =
+            (imgProps.height * availableWidth) /
+            imgProps.width;
+
+        doc.addImage(
+            imgData,
+            "PNG",
+            margin,
+            margin,
+            availableWidth,
+            pdfHeight
+        );
+
+        const nomeArquivo = nomeMarca
+            .replace(/[^\wÀ-ÿ-]+/g, "_")
+            .replace(/_+/g, "_");
+
+        doc.save(
+            `SMART_Analise_Demonstrativa_${nomeArquivo}.pdf`
+        );
+    });
 }
 
-/**
- * Redireciona o usuário para a página de pagamento para fazer o upgrade.
- * @param {string} targetPlan - O plano para o qual o usuário deseja fazer upgrade.
- */
+
+// ----------------------------------------------------------
+// FLUXO DE UPGRADE DEMONSTRATIVO
+// ----------------------------------------------------------
+
 function iniciarUpgrade(targetPlan) {
-    console.log(`Iniciando fluxo de upgrade para o plano: ${targetPlan}`);
-    window.location.href = `pagamento.html?plan=${targetPlan}`;
-}
+    if (!plans.includes(targetPlan)) {
+        alert("Plano inválido.");
+        return;
+    }
 
-// Inicializa a UI no carregamento da página
-document.addEventListener('DOMContentLoaded', () => {
-    populateClassSelect();
-    updatePlanUI();
-});
+    if (targetPlan === "Básico") {
+        changePlan("Básico");
+        return;
+    }
+
+    console.log(
+        `Abrindo demonstração de upgrade para o plano ${targetPlan}.`
+    );
+
+    window.location.href =
+        `pagamento.html?plan=${encodeURIComponent(targetPlan)}`;
+}
