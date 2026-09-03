@@ -1,70 +1,279 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pagamento - SAMARTA</title>
+
+    <meta
+        name="description"
+        content="Demonstração do fluxo de upgrade de planos do protótipo SMART."
+    >
+
+    <title>SMART — Upgrade de Plano</title>
+
     <link rel="stylesheet" href="pagamento.css">
 </head>
+
 <body>
+
     <div class="container">
+
         <header>
-            <h1>Finalize sua Assinatura</h1>
-            <p>Você está a um passo de proteger sua marca com o melhor da tecnologia.</p>
+
+            <h1>Upgrade de Plano</h1>
+
+            <p>
+                Demonstração da jornada de contratação do SMART.
+            </p>
+
         </header>
 
+
         <main>
+
+            <!-- =============================================
+                 AVISO
+            ============================================== -->
+
             <div class="plan-summary">
-                <h2>Resumo do Pedido</h2>
-                <div class="plan-details">
-                    <span>Plano</span>
-                    <strong id="plan-name">Carregando...</strong>
-                </div>
-                <div class="plan-price">
-                    <span>Valor Mensal</span>
-                    <strong id="plan-price">R$ 0,00</strong>
-                </div>
+
+                <h2>🧪 Ambiente Demonstrativo</h2>
+
+                <p>
+                    Esta página simula a experiência de upgrade de um
+                    produto SaaS.
+                </p>
+
+                <p>
+                    <strong>
+                        Nenhuma cobrança ou transação financeira real
+                        será realizada.
+                    </strong>
+                </p>
+
             </div>
+
+
+            <!-- =============================================
+                 RESUMO DO PLANO
+            ============================================== -->
+
+            <div class="plan-summary">
+
+                <h2>Resumo do Plano</h2>
+
+                <div class="plan-details">
+
+                    <span>Plano</span>
+
+                    <strong id="plan-name">
+                        Carregando...
+                    </strong>
+
+                </div>
+
+
+                <div class="plan-price">
+
+                    <span>Valor demonstrativo</span>
+
+                    <strong id="plan-price">
+                        R$ 0,00
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <!-- =============================================
+                 MÉTODO DE PAGAMENTO
+            ============================================== -->
 
             <div class="payment-form">
-                <h2>Dados de Pagamento</h2>
+
+                <h2>Simulação de Pagamento</h2>
+
+                <p>
+                    Escolha um método para visualizar o fluxo
+                    demonstrativo.
+                </p>
+
+
                 <div class="payment-methods">
-                    <label for="method-cc" class="payment-method-label active">Cartão de Crédito</label>
-                    <label for="method-pix" class="payment-method-label">Pix</label>
-                    <label for="method-boleto" class="payment-method-label">Boleto</label>
+
+                    <label
+                        for="method-cc"
+                        class="payment-method-label active"
+                        data-method="cc"
+                    >
+                        Cartão
+                    </label>
+
+                    <label
+                        for="method-pix"
+                        class="payment-method-label"
+                        data-method="pix"
+                    >
+                        Pix
+                    </label>
+
+                    <label
+                        for="method-boleto"
+                        class="payment-method-label"
+                        data-method="boleto"
+                    >
+                        Boleto
+                    </label>
+
                 </div>
 
-                <div id="credit-card-content" class="payment-content active">
-                    <input type="text" placeholder="Nome no Cartão" required>
-                    <input type="text" placeholder="Número do Cartão" required>
+
+                <!-- =========================================
+                     CARTÃO
+                ========================================== -->
+
+                <div
+                    id="credit-card-content"
+                    class="payment-content active"
+                >
+
+                    <input
+                        type="text"
+                        placeholder="Nome demonstrativo"
+                        autocomplete="off"
+                    >
+
+                    <input
+                        type="text"
+                        placeholder="0000 0000 0000 0000"
+                        autocomplete="off"
+                    >
+
                     <div class="card-details">
-                        <input type="text" placeholder="Validade (MM/AA)" required>
-                        <input type="text" placeholder="CVC" required>
+
+                        <input
+                            type="text"
+                            placeholder="MM/AA"
+                            autocomplete="off"
+                        >
+
+                        <input
+                            type="text"
+                            placeholder="CVC"
+                            autocomplete="off"
+                        >
+
                     </div>
-                    <select id="installments" required>
-                        <option value="1">1x de R$ 99,90</option>
-                        <!-- Opções de parcelamento serão adicionadas via JS -->
+
+
+                    <select id="installments">
+
+                        <option value="1">
+                            Carregando opções...
+                        </option>
+
                     </select>
+
+                    <p>
+                        <small>
+                            ⚠️ Não informe dados reais de cartão.
+                            Este formulário não processa pagamentos.
+                        </small>
+                    </p>
+
                 </div>
 
-                <div id="pix-content" class="payment-content">
-                    <p>Para pagar com Pix, escaneie o QR Code abaixo com o app do seu banco ou copie o código.</p>
+
+                <!-- =========================================
+                     PIX
+                ========================================== -->
+
+                <div
+                    id="pix-content"
+                    class="payment-content"
+                >
+
+                    <p>
+                        Em uma implementação real, esta área poderia
+                        apresentar um QR Code e um código Pix gerados
+                        por um gateway de pagamento.
+                    </p>
+
                     <div class="pix-container">
-                        <img src="https://via.placeholder.com/200x200.png?text=QR+Code+PIX" alt="QR Code para pagamento Pix" class="pix-qrcode">
-                        <button class="btn-secondary">Copiar Código Pix</button>
+
+                        <p>
+                            <strong>
+                                QR CODE DEMONSTRATIVO
+                            </strong>
+                        </p>
+
+                        <button
+                            type="button"
+                            class="btn-secondary"
+                            id="demo-pix-btn"
+                        >
+                            Simular Código Pix
+                        </button>
+
                     </div>
+
                 </div>
 
-                <div id="boleto-content" class="payment-content">
-                    <p>O boleto bancário será gerado com vencimento para 2 dias úteis. Você poderá pagar em qualquer banco, casa lotérica ou via internet banking.</p>
-                    <p><strong>A confirmação pode levar até 3 dias úteis.</strong></p>
+
+                <!-- =========================================
+                     BOLETO
+                ========================================== -->
+
+                <div
+                    id="boleto-content"
+                    class="payment-content"
+                >
+
+                    <p>
+                        Em uma implementação real, esta área poderia
+                        gerar um boleto por meio de integração com um
+                        gateway de pagamento.
+                    </p>
+
+                    <p>
+                        <strong>
+                            Nenhum boleto real será emitido.
+                        </strong>
+                    </p>
+
                 </div>
 
-                <button id="confirm-action-btn">Pagar com Cartão</button>
+
+                <!-- =========================================
+                     AÇÃO
+                ========================================== -->
+
+                <button
+                    id="confirm-action-btn"
+                    type="button"
+                >
+                    Simular Pagamento com Cartão
+                </button>
+
             </div>
-            <a href="index.html" class="back-link">Voltar para o sistema</a>
+
+
+            <a
+                href="index.html"
+                class="back-link"
+            >
+                ← Voltar para o SMART
+            </a>
+
         </main>
+
     </div>
+
+
     <script src="pagamento.js"></script>
+
 </body>
+
 </html>
